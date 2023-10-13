@@ -1,14 +1,18 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
-description: "My final project"
+author: "Jonah Simon"
+description: "Gov 50 Final Project"
 output:
   distill::distill_article:
     self_contained: false
 ---
 
-
-
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am interested in exploring data related to the filibuster and its impact on the amount of legislation passed by the Senate over time.
+
+## Project proposal
+
+Does the number of filibusters in the Senate impact Congressional approval ratings by the American public? In this study, I plan to analyze the relationship between cloture votes in the Senate and Congressional approval by year. My hypothesis is that an increase in the number of failed cloture votes will be accompanied by an decrease in public approval for Congress. This is because filibusters are often done to prevent legislation that a majority of Senators support but do not have the necessary supermajority of 60 votes. Thus, because Americans elected this Senate majority and thus a majority of Americans likely support the policies the majority party produces, I expect that they will disaprove of the use of the filibuster and that this will result in greater disaproval of Congress in general. For my data, I will use two data sets. The first comes from the Brookings Institute and tracks the number of cloture votes and the success of each vote from 1919-2018. The data is divided by Senate. The second comes from Gallup, and contains Congressional approval ratings from 1999-2023. Thus, the scope of my study will be the years 1999-2018, as this is where my two data sets overlap. Additionally, as the filibuster data set only tracks by Congress (a two year period) and not by year, my unit of analysis will be a Congress (e.g., the 118th Congress). I will use the average of the two years of approval data to compare to the filibuster data, as the approval data is separated by individual year and not by Congress. If I observe that there is a negative linear relationship between the number of filibusters and Congressional approval, this will provide support for my thesis. If I observe a positive linear relationship, or no significant relationship, this will provide evidence against my hypothesis.
+
+
