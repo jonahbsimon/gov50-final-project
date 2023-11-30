@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/CongressApproval.csv","Data/FilibusterData.csv","HealthKnit.pdf","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/CongressApproval.csv","Data/FilibusterData.csv","HealthKnit.pdf","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1587,9 +1587,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"steelblue"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"indianred"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
-<span>    title <span class='op'>=</span> <span class='st'>"Impact of Filibuster on Public Approval of Congress"</span>,</span>
+<span>    title <span class='op'>=</span> <span class='st'>"Impact of the Filibuster on Public Approval of Congress"</span>,</span>
+<span>    subtitle <span class='op'>=</span> <span class='st'>"Using data from Gallup and The Brookings Institute"</span>,</span>
 <span>    x <span class='op'>=</span> <span class='st'>"Number of Filibusters In Senate"</span>,</span>
-<span>    y <span class='op'>=</span> <span class='st'>"Percent Public Congressional Approval"</span></span>
+<span>    y <span class='op'>=</span> <span class='st'>"% Public Approval of Congress"</span></span>
 <span>  <span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>correlation_plot</span> <span class='co'># Plotting data</span></span></code></pre>
@@ -1638,6 +1639,71 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <p>I also developed a bar plot to demonstrate the number of filibusters occurring each year in the Senate during the time of my analysis from 1999-2018. There does not appear to be any significant trend over time.</p>
+<h2 id="introduction">Introduction</h2>
+<p>In this project, I examine the relationship between filibusters in the U.S. Senate and public approval of the U.S. Congress from the years 1999-2018. The Senate rules require a supermajority of 60 votes to pass a cloture motion, which is used to terminate debate on a bill and allow for the bill to be brought to a floor vote. A filibuster is a term that refers to a failed cloture vote. Filibusters are a tactic commonly used by the minority party to block legislation that would otherwise pass a floor vote by simple majority. Thus, the number of filibusters that occur in a year are a strong proxy for the degree of Congressional gridlock, which is a more abstract concept.</p>
+<p>I chose to examine the relationship between filibusters and public approval of Congress in order to better understand the degree to which the actual performance of Congress relates to the public’s perception of the institution. My hypothesis is that the number of filibusters occurring in a year will be negatively correlated with public approval of Congress. This is because the filibuster is often used to prevent the passage of legislation that the majority of the Senate, and thus presumably a majority of the public, supports. However, I also hypothesize that the relationship will be weak, as I expect that a large portion of the public will be uninterested and uninformed on the events of Congress and will have fairly stable opinions on its performance across time.</p>
+<h2 id="data">Data</h2>
+<p>In this study, I conduct a cross-sectional analysis drawing from two different data sets. For my data on the number of filibusters each year, I used a data set from the Brookings Institute which tracks cloture votes in the Senate from 1919-2018 using data from the Congressional record. To find the number of filibusters that occurred each year, I took the difference of the total number of cloture votes and the number of successful cloture votes. For my data on Congressional approval, I utilized a Gallup survey taken each year from 1999-2023 tracking Congressional approval among Americans using random sampling. Combining the two data sources, I was limited in the scope of my analysis to the years 1999-2018, as these were the years at which the data from the two sources overlapped.</p>
+<p>Figure 1 shows the trend of the number of filibusters occurring over the period of anaylsis. Figure 2 shows the trend of Congressional approval over the period of anaysis.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filibusters</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"dodgerblue4"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Senate Filibusters per Year (1999-2018)"</span>,</span>
+<span>    subtitle <span class='op'>=</span> <span class='st'>"Using Brookings Institute Data"</span></span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>Fig. 1</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>`Congress Approval`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"dodgerblue4"</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"% Public Approval of Congress (1999-2018)"</span>,</span>
+<span>    subtitle <span class='op'>=</span> <span class='st'>"Using Gallup Survey Data"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"% Public Approval of Congress"</span></span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>Fig. 2</p>
+<h2 id="results">Results</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>correlation_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>Fig. 3</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>regression</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>|&gt;</span>  </span>
+<span>  <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">34.17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Filibusters</td>
+<td style="text-align: right;">-0.33</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
