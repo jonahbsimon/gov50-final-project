@@ -72,7 +72,7 @@ data <- data |>
   mutate(Filibusters = Attempted - Successful) # Creating filibuster variable
 ```
 
-Figure 1 shows the trend of the number of filibusters occurring over the period of anaylsis. Figure 2 shows the trend of Congressional approval over the period of anaysis.
+Figure 1 shows the trend of the number of filibusters occurring over the period of analysis. Figure 2 shows the trend of Congressional approval over the period of anaysis.
 
 ```{r}
 ggplot(data, aes(x = Year, y = Filibusters)) +
