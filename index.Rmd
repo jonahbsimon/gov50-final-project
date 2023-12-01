@@ -137,7 +137,7 @@ p_value_line <- grep("p-value:", summary_output, value = TRUE)
 p_value <- sub(".*p-value: (.*)$", "\\1", p_value_line) # Extracting p-value from summary function
 p_value <- p_value |>
   as.numeric() # Transforming p-value from character to numeric
-knitr::kable(p_value, digits = 2, col.names = "p-value") # Printing p-value
+knitr::kable(p_value, digits = 2, col.names = "p-value", align = "l") # Printing p-value
 ```
 
 The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. 
