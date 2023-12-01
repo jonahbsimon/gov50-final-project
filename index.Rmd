@@ -131,7 +131,7 @@ regression |>
 summary(regression) # Printing p-value
 ```
 
-The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. However, this coefficient is not statistically significant, as the regression has a p value of 0.39, meaning that this or a greater coefficient could appear 39% of the time under the null hypothesis. Therefore, I fail to reject the null hypothesis that there is no relationship between the filibuster and public approval of Congress.
+The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. However, this coefficient is not statistically significant, as the regression has a p value of 0.39, meaning that this or a greater coefficient could appear 39% of the time under the null hypothesis which does not meet the standard of .05 required to assume validity. Therefore, I fail to reject the null hypothesis that there is no relationship between the filibuster and public approval of Congress.
 
 ## Conclusion
 
