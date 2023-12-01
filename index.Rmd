@@ -127,9 +127,13 @@ regression |>
   knitr::kable(digits = 2) # Printing regression
 ```
 
+```{r}
+summary(regression) # Printing p-value
+```
+
+The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. However, this coefficient is not statistically significant, as the regression has a p value of 0.39, meaning that this or a greater coefficient could appear 39% of the time under the null hypothesis. Therefore, I fail to reject the null hypothesis that there is no relationship between the filibuster and public approval of Congress.
+
+## Conclusion
 
 
-For later:
-
-In this analysis, I ran a regression of the relationship between the number of filibusters in the Senate (measured as the difference between cloture votes taken and successful cloture votes), and public approval of Congress. My findings are that the intercept is 34.17. This means that if there were zero filibusters in the Senate, the estimated public approval of the Senate would be 34.17%. The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. 
-
+The correlation coefficient between filibusters and public approval of Congress is -0.33. This is not a significant relationship, and therefore I fail to reject the null hypothesis. This analysis could be improved by several additions. First, access to a larger data set of Congressional approval values spanning at least 50 years would be useful in order to get even better inference. Second, controlling for several additional factors, such as the partisan control of the Senate, the size of the majority, and divided versus unified government would be useful to improve comparability across years. Third, dividing the population of Congressional approval statistics into various populations by levels of political engagement and party affiliation would provide potentially useful inference opportunities, as I would be interested to see whether stronger correlations would emerge for more engaged individuals or individuals who support the majority party's legislative agenda. Fourth, because of a lack of available data on Senate approval specifically, I was forced to use broader Congressional approval measures which includes approval of the House of Representatives. A better data set would separate the two chambers, although I am doubtful of the extent to which this would change approval numbers. 
