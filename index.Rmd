@@ -15,7 +15,9 @@ I chose to examine the relationship between filibusters and public approval of C
 
 ## Data
 
-In this study, I conduct a cross-sectional analysis drawing from two different data sets. For my data on the number of filibusters each year, I used a data set from the Brookings Institute which tracks cloture votes in the Senate from 1919-2018 using data from the Congressional record. To find the number of filibusters that occurred each year, I took the difference of the total number of cloture votes and the number of successful cloture votes. For my data on Congressional approval, I utilized a Gallup survey taken each year from 1999-2023 tracking Congressional approval among Americans using random sampling. Combining the two data sources, I was limited in the scope of my analysis to the years 1999-2018, as these were the years at which the data from the two sources overlapped.
+In this study, I conduct a cross-sectional analysis drawing from two different data sets. For my data on the number of filibusters each year, I used a data set from the Brookings Institute which tracks cloture votes in the Senate from 1919-2018 using data from the Congressional record. To find the number of filibusters that occurred each year, I took the difference of the total number of cloture votes and the number of successful cloture votes. 
+
+For my data on Congressional approval, I utilized a Gallup survey taken each year from 1999-2023 tracking Congressional approval among Americans using random sampling. Combining the two data sources, I was limited in the scope of my analysis to the years 1999-2018, as these were the years at which the data from the two sources overlapped.
 
 
 ```{r LoadData}
@@ -72,9 +74,9 @@ data <- data |>
   mutate(Filibusters = Attempted - Successful) # Creating filibuster variable
 ```
 
-Figure 1 shows the trend of the number of filibusters occurring over the period of analysis. Figure 2 shows the trend of Congressional approval over the period of anaysis.
+Figure 1 shows the trend of the number of filibusters occurring over the period of analysis. 
 
-```{r}
+```{r FilibusterTrend}
 ggplot(data, aes(x = Year, y = Filibusters)) +
   geom_col(fill = "dodgerblue4") +
   labs(
@@ -84,7 +86,9 @@ ggplot(data, aes(x = Year, y = Filibusters)) +
 ```
 Fig. 1
 
-```{r}
+Figure 2 shows the trend of Congressional approval over the period of analysis.
+
+```{r ApprovalTrend}
 ggplot(data, aes(x = Year, y = `Congress Approval`)) +
   geom_line(color = "dodgerblue4", size = 1) +
   labs(
@@ -99,7 +103,7 @@ Fig. 2
 ## Results
 
 
-```{r}
+```{r CorPlot}
 correlation_plot <- ggplot(data, aes(x = Filibusters, y = `Congress Approval`)) +
   geom_point(color = "steelblue") +
   geom_smooth(method = "lm", se = FALSE, color = "indianred") +
@@ -116,7 +120,7 @@ correlation_plot # Plotting data
 Fig. 3
 
 
-```{r}
+```{r Regression}
 regression <- lm(`Congress Approval` ~ Filibusters, data = data) # Creating regression
 
 library(broom) 
@@ -127,13 +131,24 @@ regression |>
   knitr::kable(digits = 2) # Printing regression
 ```
 
-```{r}
-summary(regression) # Printing p-value
+```{r Pval}
+summary_output<- capture.output(summary(regression))
+p_value_line <- grep("p-value:", summary_output, value = TRUE)
+p_value <- sub(".*p-value: (.*)$", "\\1", p_value_line) # Extracting p-value from summary function
+p_value <- p_value |>
+  as.numeric() # Transforming p-value from character to numeric
+knitr::kable(p_value, digits = 2, col.names = "p-value") # Printing p-value
 ```
 
-The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. However, this coefficient is not statistically significant, as the regression has a p value of 0.39, meaning that this or a greater coefficient could appear 39% of the time under the null hypothesis which does not meet the standard of .05 required to assume validity. Therefore, I fail to reject the null hypothesis that there is no relationship between the filibuster and public approval of Congress.
+The correlation between filibusters and public approval is -0.33. This means that for each filibuster that occurs in the Senate, public approval of Congress decreases by .33 percentage points. 
+
+However, this coefficient is not statistically significant, as the regression has a p value of 0.39, meaning that this or a greater coefficient could appear 39% of the time under the null hypothesis. This does not meet the standard of .05 required to assume validity. Therefore, I fail to reject the null hypothesis that there is no relationship between the filibuster and public approval of Congress. 
+
+We also cannot interpret this relationship causally, as this experimental design was observational and did not attempt to control for confounding variables.
 
 ## Conclusion
 
 
-The correlation coefficient between filibusters and public approval of Congress is -0.33. This is not a significant relationship, and therefore I fail to reject the null hypothesis. This analysis could be improved by several additions. First, access to a larger data set of Congressional approval values spanning at least 50 years would be useful in order to get even better inference. Second, controlling for several additional factors, such as the partisan control of the Senate, the size of the majority, and divided versus unified government would be useful to improve comparability across years. Third, dividing the population of Congressional approval statistics into various populations by levels of political engagement and party affiliation would provide potentially useful inference opportunities, as I would be interested to see whether stronger correlations would emerge for more engaged individuals or individuals who support the majority party's legislative agenda. Fourth, because of a lack of available data on Senate approval specifically, I was forced to use broader Congressional approval measures which includes approval of the House of Representatives. A better data set would separate the two chambers, although I am doubtful of the extent to which this would change approval numbers. 
+The correlation coefficient between filibusters and public approval of Congress is -0.33. This is not a significant relationship, and therefore I fail to reject the null hypothesis. This analysis could be improved by several additions. First, access to a larger data set of Congressional approval values spanning at least 50 years would be useful in order to get even better inference. Second, controlling for several additional factors, such as the partisan control of the Senate, the size of the majority, and divided versus unified government would be useful to improve comparability across years. Third, because of a lack of available data on Senate approval specifically, I was forced to use broader Congressional approval measures which includes approval of the House of Representatives. A better data set would separate the two chambers, although I am doubtful of the extent to which this would change approval numbers. 
+
+A potential area for further exploration would be dividing the population of Congressional approval statistics into various populations by levels of political engagement and party affiliation. This would provide potentially useful inference opportunities, as I would be interested to see whether stronger correlations would emerge for more engaged individuals or individuals who support the majority party's legislative agenda.
